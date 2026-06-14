@@ -113,7 +113,7 @@ have earned \emph{and} the goodwill penalty:
 Counting only the penalty ($C_u=b=5$) is the classic newsvendor error; it would understate the
 order-up-to level and weaken the very baseline we must beat. For periodic review with lead time
 $L=1$ the protection interval is $L+1=2$ periods, so the order-up-to level is the critical
-quantile of two-period demand,
+quantile of two-period demand~\cite{zipkin},
 \begin{equation}
   S = \big\lceil F^{-1}_{\mathrm{Poisson}(2\lambda)}(\mathrm{CR}) \big\rceil
     = \big\lceil F^{-1}_{\mathrm{Poisson}(20)}(0.917) \big\rceil = 26 .
@@ -166,13 +166,13 @@ We climb the modelling ladder only as far as the problem demands and benchmark R
 strongest simple policy: (i) \texttt{random} (the floor); (ii) \texttt{base\_stock}, order-up-to
 $S=26$ from the newsvendor quantile (the near-optimal stationary anchor); (iii)
 \texttt{seasonal\_base\_stock}, a week-indexed $S_t$ (the fair adaptive competitor under
-seasonality); and (iv) an $(s,S)$ variant for the fixed-order-cost case. To compete on the same
+seasonality); and (iv) an $(s,S)$ variant~\cite{zhengfedergruen} for the fixed-order-cost case. To compete on the same
 footing, each baseline's continuous order is snapped to the discrete action menu.
 
 \paragraph{Tabular Q-learning (primary).}
 The state space is small once we act on inventory position, so a table is the right tool: it
 converges in seconds, every value is inspectable, and the greedy policy can be plotted against
-base-stock. The update is the standard
+base-stock. The update is the standard Q-learning rule~\cite{suttonbarto}:
 \begin{equation}
   Q(s,a) \leftarrow Q(s,a) + \alpha\big[r + \gamma \max_{a'} Q(s',a') - Q(s,a)\big],
 \end{equation}
@@ -181,7 +181,9 @@ $\varepsilon$ annealed $1.0\!\to\!0.05$, over $30{,}000$ episodes. Inventory pos
 in steps of $5$ ($11$ bins); a $13$-bucket season phase is added for the seasonal agent.
 
 \paragraph{PPO (stretch).}
-A Stable-Baselines3 PPO agent trains on a Gymnasium wrapper of the same environment. It is the
+A Stable-Baselines3~\cite{sb3} PPO~\cite{ppo} agent trains on a Gymnasium~\cite{gymnasium} wrapper
+of the same environment; PPO is the on-policy workhorse of modern deep reinforcement learning, the
+family launched by value-based DQN~\cite{mnih}. It is the
 stretch, not the headline: on this small problem it is slower, seed-variable, and lands
 \emph{below} the tabular agent (Section~\ref{sec:results}), which is itself the clearest argument
 for the baseline ladder.
