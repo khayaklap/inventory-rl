@@ -35,7 +35,7 @@ week  on_hand  order  demand  sales  unmet
   11        0      5      23     20      3      <- a demand spike (23) outruns stock; 3 units lost
 ```
 
-The agent keeps inventory position hovering near the base-stock level (~20), tops up with small
+The agent keeps inventory position hovering near the base-stock level (≈20), tops up with small
 orders, and only stocks out when demand spikes beyond what the protection interval can cover —
 exactly the behavior the analytical policy predicts.
 
@@ -225,8 +225,8 @@ are in [`evidence/eval_report.json`](evidence/eval_report.json) and
 correctly specified base-stock is near-optimal, and tabular Q-learning lands **within 3.3%** of it
 (mean gap −$88 per episode, 95% CI [−98, −79]). That is the point — the *negative* result that
 shows RL is not being oversold. The value of RL appears under **seasonal** demand: a *static*
-base-stock is misspecified and loses ~$580/episode, while the **phase-aware Q-agent ties the
-seasonal base-stock** (gap −$79, CI [−91, −66]) and beats the static one by ~$500/episode —
+base-stock is misspecified and loses ≈$580/episode, while the **phase-aware Q-agent ties the
+seasonal base-stock** (gap −$79, CI [−91, −66]) and beats the static one by ≈$500/episode —
 **recovering the seasonal solution from reward alone, without being handed the seasonal model**.
 (Caveat: a planner who *can* write down the seasonality does not need RL; RL hedges against not
 knowing it.)
@@ -278,16 +278,16 @@ approval-gate) and asserts the **zero-capacity-violation** invariant across ever
 
 **Robustness — the tie is not a lucky configuration.** A dedicated study (`run_robustness_study`,
 also in the report) retrains the agent across discretizations and seeds. It is **robust to bin
-width across 2–10** (all within ~3% of base-stock) but **collapses once bins are too coarse to
+width across 2–10** (all within ≈3% of base-stock) but **collapses once bins are too coarse to
 represent the order-up-to structure** (width 25 → 3 states → the policy degrades catastrophically),
 which is exactly where the discretization stops being able to express "stop ordering near S". Across
-three training **seeds** the held-out return varies by only **~$35** (2586 / 2612 / 2621) — the
+three training **seeds** the held-out return varies by only **≈$35** (2586 / 2612 / 2621) — the
 result is a property of the method, not a seed. I also checked the **finite-horizon tail**: the
 stationary agent's state excludes the week, so it cannot exploit the horizon, and its last-period
 order ($41.6 of waste) is within $2.40 of base-stock's ($39.2) — the comparison is not confounded.
 
 The whole pipeline (`inventory-rl all`) — train four agents, run the matrix, all four failure
-experiments, and the robustness study — completes in **~135 seconds** on a laptop (CPU, no GPU).
+experiments, and the robustness study — completes in **≈135 seconds** on a laptop (CPU, no GPU).
 
 ---
 
@@ -299,7 +299,7 @@ experiments, and the robustness study — completes in **~135 seconds** on a lap
   near-optimal but not exactly optimal, so a tiny RL edge is theoretically possible; our CIs show
   the stationary gap is small and against RL, so we report the honest tie.
 - **Discretization has a safe range, not infinite headroom.** The agent is robust to bin width
-  across 2–10 (all ~3% of base-stock) but collapses once bins are too coarse (width 25, 3 states)
+  across 2–10 (all ≈3% of base-stock) but collapses once bins are too coarse (width 25, 3 states)
   to represent the order-up-to structure — measured in the robustness study, not assumed.
 - **PPO seed variance.** A single PPO seed is not trustworthy; we report a multi-seed spread and
   do not let PPO carry the headline.

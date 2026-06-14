@@ -24,7 +24,7 @@ a paired bootstrap (each policy faced identical demand); full numbers in `eviden
   for a problem this well-understood, that is the honest and expected result. RL is not adding
   value over good operations research here.
 - **It earns its keep only under seasonality.** When demand swings seasonally, a *static*
-  base-stock loses ~$580/episode. The season-aware agent recovers nearly all of that, **tying a
+  base-stock loses ≈$580/episode. The season-aware agent recovers nearly all of that, **tying a
   hand-built seasonal rule** (gap −$79/episode) — but **without anyone having to model the
   season**. That is the real business case: the agent adapts when the demand pattern is unknown,
   mis-modeled, or drifting. Where we *can* write the seasonal rule down, we do not need the agent.
@@ -61,7 +61,7 @@ Following a guarded-rollout ladder — the more consequential the action, the sl
    profit is within the CI of the incumbent (or better) and zero capacity flags.
 2. **Human-in-the-loop (next).** The agent's order becomes the default; a buyer approves any order
    above the review threshold (25 units) before it is placed. **Gate:** buyers override the agent's
-   recommendation in fewer than ~10% of cases (a high override rate means it is not yet trusted).
+   recommendation in fewer than ≈10% of cases (a high override rate means it is not yet trusted).
 3. **Limited autonomy.** Auto-execute on a small, low-risk subset of SKUs, with a daily
    profit-and-inventory dashboard and an **automatic rollback** if weekly profit drops below the
    incumbent's trailing average or any capacity flag fires.

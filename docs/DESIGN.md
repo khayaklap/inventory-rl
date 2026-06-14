@@ -148,7 +148,7 @@ validation stream.
   (paired design); differences use a **paired bootstrap** (resampling episode indices preserves the
   pairing) for a 95% CI, with **Wilcoxon signed-rank** as the primary test and paired-t as a
   cross-check. The reported number is the **dollar effect size with its CI**, not just a p-value
-  (every comparison is significant at p < 1e-14, most ~1e-17, so multiple-comparison correction is moot).
+  (every comparison is significant at p < 1e-14, most ≈1e-17, so multiple-comparison correction is moot).
 - **Determinism.** Same seeds → identical held-out numbers (verified by re-running, and by a
   **clean-room reproduction**: a fresh venv from the frozen `requirements-core.txt` reproduces both
   the 51 tests and the exact headline return, 2585.6). The only non-reproducible field in

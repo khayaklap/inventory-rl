@@ -44,7 +44,7 @@ A skeptic is right to object: a competent planner would just index the order-up-
 That comparison was rigged. **Fix:** added `SeasonalBaseStockPolicy` (`S_t` from the
 protection-interval demand each week) as the fair competitor. The honest result is that the
 phase-aware agent **ties** it (gap −$79/episode, CI [−91, −66]) while beating the static one by
-~$500/episode. The defensible value of RL is reaching the seasonal solution *without being handed
+≈$500/episode. The defensible value of RL is reaching the seasonal solution *without being handed
 the model* — not magic outperformance. Lesson: the most important baseline is the one that makes
 your method look *least* impressive.
 
@@ -89,7 +89,7 @@ behavioral consequences; write them down.
 My planning note guessed the naive agent's true-objective return would go "near zero or negative."
 The actual result is −38.5% (return 1591 vs 2586) — a severe, clear failure, but **positive**. The
 reason: under cost-at-order, purchase cost is paid for whatever is eventually sold regardless of
-policy, so the differentiating damage is *holding* (1513 vs ~470), not a total wipeout. **Fix:**
+policy, so the differentiating damage is *holding* (1513 vs ≈470), not a total wipeout. **Fix:**
 report the measured number, not the dramatic guess. Lesson: let the experiment correct the
 narrative.
 
@@ -157,13 +157,13 @@ will poke the hyperparameters and the edge effects; measure them before they do.
 
 ## Live results (final, from `evidence/eval_report.json`)
 
-- **Unit tests:** 51 passed (no GPU, no torch). Full `inventory-rl all` pipeline: **~135 seconds**.
+- **Unit tests:** 51 passed (no GPU, no torch). Full `inventory-rl all` pipeline: **≈135 seconds**.
 - **Scenario harness:** 7 / 7 scenarios pass the zero-capacity-violation invariant across 5 policies.
 - **Stationary:** base-stock 2674 · Q-learning 2586 (−3.3%) · PPO 2539 · random 1793.
 - **Seasonal:** seasonal base-stock 2667 · phase-Q 2588 (−3.0%) · IP-only Q 2253 · static base-stock
   2087 · PPO 1929 · random 1427.
 - **Reward hacking:** naive service 0.997 vs balanced 0.989, but naive return 1591 vs 2586 (−38.5%),
-  on-hand 29 vs 9, holding 1513 vs ~470, capacity violations 0.
+  on-hand 29 vs 9, holding 1513 vs ≈470, capacity violations 0.
 - **Overfitting probe (λ=10 → λ=16):** gap-to-oracle 685 (Q-learning) vs 1,549 (static base-stock).
 - **Safety ablation (always-max policy):** peak on-hand 39 / 0 violations (clamp on) vs 1,023 / 49
   (clamp off).
