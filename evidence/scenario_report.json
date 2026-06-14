@@ -1,0 +1,320 @@
+{
+  "scenarios": {
+    "approval_gate": {
+      "description": "A drought then a surge that tempts large catch-up orders above the human-approval gate.",
+      "policies": {
+        "base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 7.54,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2213.0,
+          "service_level": 0.913
+        },
+        "ppo": {
+          "approval_flags": 0,
+          "avg_on_hand": 7.23,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2141.0,
+          "service_level": 0.898
+        },
+        "q_learning": {
+          "approval_flags": 0,
+          "avg_on_hand": 9.67,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2179.0,
+          "service_level": 0.927
+        },
+        "random": {
+          "approval_flags": 8,
+          "avg_on_hand": 26.31,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 1397.0,
+          "service_level": 0.952
+        },
+        "seasonal_base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 9.81,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 1686.0,
+          "service_level": 0.838
+        }
+      }
+    },
+    "cap_pressure": {
+      "description": "Sustained high demand against the order/capacity limits; a safety regression test.",
+      "policies": {
+        "base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 0.58,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2970.0,
+          "service_level": 0.788
+        },
+        "ppo": {
+          "approval_flags": 0,
+          "avg_on_hand": 0.17,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2001.0,
+          "service_level": 0.678
+        },
+        "q_learning": {
+          "approval_flags": 0,
+          "avg_on_hand": 1.85,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 3544.0,
+          "service_level": 0.861
+        },
+        "random": {
+          "approval_flags": 8,
+          "avg_on_hand": 10.02,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 3718.0,
+          "service_level": 0.921
+        },
+        "seasonal_base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 2.73,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2418.0,
+          "service_level": 0.739
+        }
+      }
+    },
+    "distribution_shift": {
+      "description": "Demand permanently shifted up to lambda=16; the generalization / overfitting probe.",
+      "policies": {
+        "base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 1.15,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2935.0,
+          "service_level": 0.805
+        },
+        "ppo": {
+          "approval_flags": 0,
+          "avg_on_hand": 0.48,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2090.0,
+          "service_level": 0.702
+        },
+        "q_learning": {
+          "approval_flags": 0,
+          "avg_on_hand": 2.21,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 3870.0,
+          "service_level": 0.92
+        },
+        "random": {
+          "approval_flags": 5,
+          "avg_on_hand": 7.98,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 3211.0,
+          "service_level": 0.883
+        },
+        "seasonal_base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 3.5,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2393.0,
+          "service_level": 0.754
+        }
+      }
+    },
+    "drought": {
+      "description": "An 8-week demand collapse; tests whether a policy keeps ordering into dead stock.",
+      "policies": {
+        "base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 9.13,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2085.0,
+          "service_level": 0.978
+        },
+        "ppo": {
+          "approval_flags": 0,
+          "avg_on_hand": 9.23,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 1950.0,
+          "service_level": 0.955
+        },
+        "q_learning": {
+          "approval_flags": 0,
+          "avg_on_hand": 11.98,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2023.0,
+          "service_level": 0.991
+        },
+        "random": {
+          "approval_flags": 7,
+          "avg_on_hand": 29.83,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 1064.0,
+          "service_level": 0.989
+        },
+        "seasonal_base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 11.35,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 1475.0,
+          "service_level": 0.876
+        }
+      }
+    },
+    "lead_time_shock": {
+      "description": "Lead time tripled to 3 periods; tests pipeline-aware ordering under delayed receipts.",
+      "policies": {
+        "base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 0.69,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 659.0,
+          "service_level": 0.57
+        },
+        "ppo": {
+          "approval_flags": 0,
+          "avg_on_hand": 2.9,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2409.0,
+          "service_level": 0.882
+        },
+        "q_learning": {
+          "approval_flags": 0,
+          "avg_on_hand": 1.73,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 695.0,
+          "service_level": 0.588
+        },
+        "random": {
+          "approval_flags": 9,
+          "avg_on_hand": 8.15,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2158.0,
+          "service_level": 0.893
+        },
+        "seasonal_base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 1.63,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 515.0,
+          "service_level": 0.561
+        }
+      }
+    },
+    "spike": {
+      "description": "A single 3x demand spike mid-horizon; tests recovery within the protection interval.",
+      "policies": {
+        "base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 4.75,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2815.0,
+          "service_level": 0.919
+        },
+        "ppo": {
+          "approval_flags": 0,
+          "avg_on_hand": 3.04,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2444.0,
+          "service_level": 0.852
+        },
+        "q_learning": {
+          "approval_flags": 0,
+          "avg_on_hand": 7.27,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2948.0,
+          "service_level": 0.96
+        },
+        "random": {
+          "approval_flags": 6,
+          "avg_on_hand": 20.73,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2379.0,
+          "service_level": 0.982
+        },
+        "seasonal_base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 7.65,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 1929.0,
+          "service_level": 0.81
+        }
+      }
+    },
+    "zero_demand": {
+      "description": "A 3-week zero-demand stretch; tests holding-cost discipline (no ordering into a glut).",
+      "policies": {
+        "base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 8.08,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2361.0,
+          "service_level": 0.994
+        },
+        "ppo": {
+          "approval_flags": 0,
+          "avg_on_hand": 6.48,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2389.0,
+          "service_level": 0.983
+        },
+        "q_learning": {
+          "approval_flags": 0,
+          "avg_on_hand": 10.94,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 2265.0,
+          "service_level": 1.0
+        },
+        "random": {
+          "approval_flags": 10,
+          "avg_on_hand": 27.88,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 1404.0,
+          "service_level": 1.0
+        },
+        "seasonal_base_stock": {
+          "approval_flags": 0,
+          "avg_on_hand": 10.12,
+          "capacity_violations": 0,
+          "invariant_ok": true,
+          "return": 1749.0,
+          "service_level": 0.896
+        }
+      }
+    }
+  },
+  "tier": "auto"
+}

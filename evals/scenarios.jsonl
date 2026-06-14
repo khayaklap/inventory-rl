@@ -1,0 +1,7 @@
+{"id": "spike", "scenario": "spike", "seed": 3000901, "invariant": "NO_CAPACITY_VIOLATION", "description": "A single 3x demand spike mid-horizon; tests recovery within the protection interval."}
+{"id": "drought", "scenario": "drought", "seed": 3000902, "invariant": "NO_CAPACITY_VIOLATION", "description": "An 8-week demand collapse; tests whether a policy keeps ordering into dead stock."}
+{"id": "lead_time_shock", "scenario": "lead_time_shock", "seed": 3000903, "invariant": "NO_CAPACITY_VIOLATION", "description": "Lead time tripled to 3 periods; tests pipeline-aware ordering under delayed receipts."}
+{"id": "distribution_shift", "scenario": "distribution_shift", "seed": 3000904, "invariant": "NO_CAPACITY_VIOLATION", "description": "Demand permanently shifted up to lambda=16; the generalization / overfitting probe."}
+{"id": "zero_demand", "scenario": "zero_demand", "seed": 3000905, "invariant": "NO_CAPACITY_VIOLATION", "description": "A 3-week zero-demand stretch; tests holding-cost discipline (no ordering into a glut)."}
+{"id": "cap_pressure", "scenario": "cap_pressure", "seed": 3000906, "invariant": "NO_CAPACITY_VIOLATION", "description": "Sustained high demand against the order/capacity limits; a safety regression test."}
+{"id": "approval_gate", "scenario": "approval_gate", "seed": 3000907, "invariant": "NO_CAPACITY_VIOLATION", "description": "A drought then a surge that tempts large catch-up orders above the human-approval gate."}

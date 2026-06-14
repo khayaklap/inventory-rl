@@ -1,0 +1,28 @@
+# --- Python ---
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+
+# --- Evidence: keep curated committed examples, ignore ad-hoc local runs ---
+# (Committed sample artifacts are force-added explicitly; transient runs are ignored.)
+evidence/_local/
+
+# --- Training scratch (committed artifacts live in models/ and evidence/) ---
+runs/
+*.monitor.csv
+tensorboard/
+
+# --- LaTeX build artifacts (keep paper/report.tex and the built paper/report.pdf) ---
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz

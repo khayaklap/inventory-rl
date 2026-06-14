@@ -1,0 +1,9 @@
+{
+  "_comment": "Project markdown style. Disables markdownlint's purely-cosmetic spacing/width rules (the docs render correctly on GitHub); keeps meaningful rules like MD040 (fenced-code language).",
+  "MD013": false,
+  "MD022": false,
+  "MD031": false,
+  "MD032": false,
+  "MD058": false,
+  "MD060": false
+}

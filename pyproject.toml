@@ -1,0 +1,59 @@
+[project]
+name = "inventory-rl"
+version = "0.1.0"
+description = "A tabular-RL (and PPO-stretch) agent for single-SKU inventory replenishment, benchmarked against a newsvendor base-stock policy."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "gymnasium>=0.29",
+    "matplotlib>=3.8",
+    "pandas>=2.1",
+]
+
+[project.optional-dependencies]
+# `pip install -e ".[dev]"` reproduces the no-GPU quality gate (tests + lint + type-check).
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "mypy>=1.10",
+]
+# `pip install -e ".[stretch]"` adds the PPO stretch (CPU torch + Stable-Baselines3).
+stretch = [
+    "torch>=2.2",
+    "stable-baselines3>=2.3",
+    "cloudpickle>=3.0",
+]
+
+[project.scripts]
+# Lets `inventory-rl all` work as a console entry point in addition to `python -m inventory_rl.cli`.
+inventory-rl = "inventory_rl.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/inventory_rl"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+src = ["src", "tests", "evals"]
+
+[tool.ruff.lint]
+# A pragmatic, meaningful rule set: errors, pyflakes, import-sort, modern-syntax, bugbear, simplify.
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+# numpy/gymnasium/sb3 ship partial or no stubs; ignore missing third-party stubs but keep
+# our own code honestly typed.
+ignore_missing_imports = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
